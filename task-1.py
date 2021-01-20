@@ -1,41 +1,24 @@
-# Создать список и заполнить его элементами различных типов данных.
-# Реализовать скрипт проверки типа данных каждого элемента.
-# Использовать функцию type() для проверки типа.
-# Элементы списка можно не запрашивать у пользователя, а указать явно, в программе.
+# Реализовать функцию, принимающую два числа (позиционные аргументы) и выполняющую их деление.
+# Числа запрашивать у пользователя, предусмотреть обработку ситуации деления на ноль
 
-# from timeit import timeit as t
-various_types = []
+def zde():
+    num1 = float(input("Введите первое число: "))
+    num2 = float(input("Введите второе число: "))
+    return num1, num2
 
-# <------------- Numbers ---------------->
-various_types.append(12)
 
-# <------------- Float ---------------->
-various_types.append(5.5)
+x, y = zde()
 
-# <------------- Complex ---------------->
-various_types.append(complex(1, 3))
+while True:
 
-# <------------- String ---------------->
-various_types.append('fruit')
+    if y != 0:
 
-# <------------- List ---------------->
-various_types.append(['apple', 'banana'])
+        print(f"{x} / {y} is {x/y}")
+        break
 
-# <------------- Tuple ---------------->
-various_types.append(tuple('Earth'))
+    else:
 
-# <------------- Set ---------------->
-various_types.append(set('Winter'))
-
-# <------------- Bool ---------------->
-various_types.append(False)
-
-# <------------- Dict ---------------->
-various_types.append({'name': 'Timur', 'age': 36})
-
-# <------------- None ---------------->
-various_types.append(None)
-
-for item in various_types:
-    print(type(item))
-    # print(round(t(type(item)), 3))
+        print('*'*22)
+        print("На ноль делить нельзя!")
+        print('*'*22)
+        x, y = zde()
