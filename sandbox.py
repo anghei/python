@@ -5,11 +5,7 @@
 # Пример исходного списка: [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55].
 # Результат: [12, 44, 4, 10, 78, 123].
 
-from random import randint
-# nums = [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]
-nums = [randint(1, 99) for x in range(20)]
+# from itertools import z
+# from math import
 
-temp_list = [x for x in zip(nums[1:],nums[:-1]) if x[1] < x[0]]
-high_num = [x for (x, y) in temp_list]
-
-print(high_num)
+# print(ll)
