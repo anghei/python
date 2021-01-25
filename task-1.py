@@ -3,3 +3,16 @@
 # Для выполнения расчета для конкретных значений необходимо запускать скрипт с параметрами.
 
 
+from sys import argv
+
+_, fee, wtime, bonus = argv
+
+try:
+    fee = int(fee)
+    wtime = int(wtime)
+    bonus = int(bonus)
+    summary = fee * wtime + bonus
+    print('Заработная плата сотрудника', summary)
+
+except ValueError:
+    print('Все параметры должны быть цифровыми')

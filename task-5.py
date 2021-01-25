@@ -3,3 +3,10 @@
 # Необходимо получить результат вычисления произведения всех элементов списка.
 
 # TODO: использовать функцию reduce().
+from functools import reduce
+
+
+mylist = [x for x in range(100, 1001, 2)]
+sum_list = [reduce((lambda x, y: x + y), mylist)]
+
+print(sum_list)

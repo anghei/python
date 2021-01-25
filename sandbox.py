@@ -5,7 +5,10 @@
 # Пример исходного списка: [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55].
 # Результат: [12, 44, 4, 10, 78, 123].
 
-# from itertools import z
-# from math import
+from collections import Counter
+mylist = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
+df = [k for k, v in Counter(mylist).items() if v > 1]
 
-# print(ll)
+list_difference = [item for item in mylist if item not in df]
+
+print(list_difference)

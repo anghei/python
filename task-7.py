@@ -3,3 +3,17 @@
 # отвечает за получение факториала числа, а в цикле необходимо выводить только первые n чисел, начиная с 1! и до n!
 
 # Подсказка: факториал числа n — произведение чисел от 1 до n. Например, факториал четырёх 4! = 1 * 2 * 3 * 4 = 24.
+def fact(fnum):
+    iternum = 0
+    while iternum < fnum:
+        yield iternum+1
+        iternum += 1
+
+
+n = 10
+curfact = 1
+curfnum = 1
+for el in fact(n):
+	curfact *= el
+	print(curfnum,'!=',curfact)
+	curfnum += 1
