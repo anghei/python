@@ -1,12 +1,10 @@
-# Реализовать формирование списка, используя функцию range() и возможности генератора.
-# В список должны войти четные числа от 100 до 1000 (включая границы).
-# Необходимо получить результат вычисления произведения всех элементов списка.
+import random
 
-# TODO: использовать функцию reduce().
-from functools import reduce
-
-
-mylist = [x for x in range(100, 1001, 2)]
-sum_list = [reduce((lambda x, y: x + y), mylist)]
-
-print(sum_list)
+with open('task-5.txt', 'w+', encoding='utf-8') as numbers:
+    x = [random.randint(1, 100) for i in range(1, 17)]
+    print(x)
+    count = 0
+    for number in x:
+        # print(number)
+        count += number
+    print(f'Sum of numbers in a row: {count}')

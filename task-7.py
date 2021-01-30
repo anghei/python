@@ -1,19 +1,13 @@
-# Реализовать генератор с помощью функции с ключевым словом yield, создающим очередное значение. При вызове функции
-# должен создаваться объект-генератор. Функция должна вызываться следующим образом: for el in fact(n). Функция
-# отвечает за получение факториала числа, а в цикле необходимо выводить только первые n чисел, начиная с 1! и до n!
+import json
 
-# Подсказка: факториал числа n — произведение чисел от 1 до n. Например, факториал четырёх 4! = 1 * 2 * 3 * 4 = 24.
-def fact(fnum):
-    iternum = 0
-    while iternum < fnum:
-        yield iternum+1
-        iternum += 1
+with open('task-7.json', 'w+', encoding='utf-8') as json_f:
+  with open('task-7.txt', 'r', encoding='utf-8') as firm:
+    income = {name.split()[0]: int(name.split()[2]) - int(name.split()[3]) for name in firm}
+    # print(income)
+    avg_income = {
+      "Средняя прибыль": sum([int(x) for x in filter(lambda x: x > 0, income.values())]) / len([int(x) for x in filter(lambda x: x > 0, income.values())])
+    }
 
+    final = [income, avg_income]
 
-n = 10
-curfact = 1
-curfnum = 1
-for el in fact(n):
-	curfact *= el
-	print(curfnum,'!=',curfact)
-	curfnum += 1
+  json.dump(final, json_f, ensure_ascii=False, indent=4)

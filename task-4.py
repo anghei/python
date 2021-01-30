@@ -1,20 +1,12 @@
-# Представлен список чисел. Определить элементы списка, не имеющие повторений.
-# Сформировать итоговый массив чисел, соответствующих требованию.
-# Элементы вывести в порядке их следования в исходном списке.
-# Для выполнения задания обязательно использовать генератор.
+from google_trans_new import google_translator
+import requests
 
-# Пример исходного списка: [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11].
-# Результат: [23, 1, 3, 10, 4, 11]
+translator = google_translator()
 
-from itertools import cycle
+with open('task-4.txt', encoding='utf-8') as en:
+    with open('task-4-ru.txt', 'w', encoding='utf-8') as ru:
+        for line in en:
+            translate_text = translator.translate(line, lang_tgt='ru')
+            print(translate_text, file=ru)
 
-nums = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
-# uq = list(cycle(nums))
-a = sorted(nums)
-
-uq = [lambda x, y: x, y in a if x != y]
-# for i in nums:
-#     print(i)
-# unique_nums = [(lambda x: x*x)(x) for x in nums]
-
-print(uq)
+# print(translate_text)

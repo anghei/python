@@ -1,5 +1,14 @@
-# Для чисел в пределах от 20 до 240 найти числа, кратные 20 или 21. Необходимо решить задание в одну
-# строку. Подсказка: использовать функцию range() и генератор.
-
-num_list = [i for i in range(20, 241) if i % 20 == 0 or i % 21 == 0]
-print(num_list)
+with open('task-3.txt', encoding='utf-8') as employees:
+    sum_salary = 0
+    print('*'*41)
+    for index, line in enumerate(employees):
+        name = line.split(' ')[0]
+        salary = float(line.split(' ')[1])
+        sum_salary += salary
+        if salary < 20000:
+            print(f'Employee {name} have salary below $20000')
+        # sum(salary)
+    avg_salary = round(sum_salary / (index + 1), 2)
+    print('*'*41)
+    print(f'Average salary of employees is ${avg_salary}')
+    print('*' * 41)

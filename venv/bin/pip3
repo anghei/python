@@ -1,4 +1,4 @@
-#!/media/anghei/Development/ds/geekbrain/python/venv/bin/python
+#!/home/anghei/python/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

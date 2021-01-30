@@ -1,18 +1,12 @@
-# Реализовать скрипт, в котором должна быть предусмотрена функция расчета заработной платы сотрудника.
-# В расчете необходимо использовать формулу: (выработка в часах * ставка в час) + премия.
-# Для выполнения расчета для конкретных значений необходимо запускать скрипт с параметрами.
-
-
-from sys import argv
-
-_, fee, wtime, bonus = argv
-
-try:
-    fee = int(fee)
-    wtime = int(wtime)
-    bonus = int(bonus)
-    summary = fee * wtime + bonus
-    print('Заработная плата сотрудника', summary)
-
-except ValueError:
-    print('Все параметры должны быть цифровыми')
+with open('task-1.txt', 'w', encoding='utf-8') as f_obj:
+    break_point = 'q'
+    result_list = []
+    while True:
+        print('If you wanna quiet press Q')
+        user_data = input('Input some data: ')
+        if user_data.lower() == 'q':
+            # result_list.pop()
+            break
+        f_obj.write(user_data + '\n')
+        # user_data = ''.join(map(str, user_data))
+        # result_list.append(user_data)
