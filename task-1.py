@@ -1,12 +1,26 @@
-with open('task-1.txt', 'w', encoding='utf-8') as f_obj:
-    break_point = 'q'
-    result_list = []
-    while True:
-        print('If you wanna quiet press Q')
-        user_data = input('Input some data: ')
-        if user_data.lower() == 'q':
-            # result_list.pop()
-            break
-        f_obj.write(user_data + '\n')
-        # user_data = ''.join(map(str, user_data))
-        # result_list.append(user_data)
+from colorama import Back
+from time import sleep
+
+
+class TrafficLight:
+
+    color = 'red'
+
+    def __init__(self, _color='red'):
+        self._color = _color
+        # TrafficLight.colors.append(self)
+
+    def running(self):
+        while True:
+            if self._color == 'red':
+                print(Back.RED + 'Горит красный сигнал светофора')
+                sleep(7)
+                print(Back.YELLOW + 'Горит желтый сигнал светофора')
+                sleep(2)
+                print(Back.GREEN + 'Горит зеленый сигнал светофора')
+                sleep(3)
+                print(Back.YELLOW + 'Горит желтый сигнал светофора')
+                sleep(2)
+
+a = TrafficLight()
+a.running()

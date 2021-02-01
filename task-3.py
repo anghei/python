@@ -1,14 +1,34 @@
-with open('task-3.txt', encoding='utf-8') as employees:
-    sum_salary = 0
-    print('*'*41)
-    for index, line in enumerate(employees):
-        name = line.split(' ')[0]
-        salary = float(line.split(' ')[1])
-        sum_salary += salary
-        if salary < 20000:
-            print(f'Employee {name} have salary below $20000')
-        # sum(salary)
-    avg_salary = round(sum_salary / (index + 1), 2)
-    print('*'*41)
-    print(f'Average salary of employees is ${avg_salary}')
-    print('*' * 41)
+class Worker:
+    __income = {
+        'wage': 150000,
+        'bonus': 220000
+    }
+
+    def __init__(self, name='John', surname='Smith', position='CEO'):
+        self.name = name
+        self.surname = surname
+        self.position = position
+        self.income = Worker.__income
+        self.full_name = name + surname
+        self.total_income = Worker.__income['wage'] + Worker.__income['bonus']
+
+    # def get_full_name(self):
+    #     return self.name + ' ' + self.surname
+    #
+    # def get_total_income(self):
+    #     return self.total_income
+
+
+class Position(Worker):
+    #
+    def get_full_name(self):
+        return self.name + ' ' + self.surname
+
+    def get_total_income(self):
+        return self.total_income
+
+
+a = Position()
+
+print(f'Employee is {a.get_full_name()}')
+print(f'Total income of {a.get_full_name()} is ${a.get_total_income()}')
