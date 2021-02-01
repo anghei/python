@@ -38,6 +38,7 @@ class SportCar(Car):
     def show_speed(self, speed):
         return Fore.GREEN + f'Speed of {self.name} is {speed}! Be careful!' + Style.RESET_ALL
 
+
 class WorkCar(Car):
     def show_speed(self, speed):
         if speed >= 40:
@@ -49,7 +50,7 @@ class PoliceCar(Car):
 
     def show_speed(self, speed):
         return Fore.BLUE + f'Speed of {self.name} is {speed}! You are in police car!' \
-                          f' Go as you want' + Style.RESET_ALL
+                           f' Go as you want' + Style.RESET_ALL
 
 
 b = PoliceCar('Lambo')
