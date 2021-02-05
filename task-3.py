@@ -1,34 +1,40 @@
-class Worker:
-    __income = {
-        'wage': 150000,
-        'bonus': 220000
-    }
+class Cell:
+    """
+    Супер-пупер метод молекулярной генетики и инженерии
+    """
+    def __init__(self, quantity):
+        self.q = quantity
 
-    def __init__(self, name='John', surname='Smith', position='CEO'):
-        self.name = name
-        self.surname = surname
-        self.position = position
-        self.income = Worker.__income
-        self.full_name = name + surname
-        self.total_income = Worker.__income['wage'] + Worker.__income['bonus']
+    def make_order(self, rows):
+        return '\n'.join(['@ ' * rows for _ in range(self.q // rows)]) + '\n' + '@ ' * (self.q % rows)
 
-    # def get_full_name(self):
-    #     return self.name + ' ' + self.surname
-    #
-    # def get_total_income(self):
-    #     return self.total_income
+    def __str__(self):
+        return f"{self.q}"
+
+    def __add__(self, other):
+        if isinstance(other, Cell):
+            return f'Сумма клеток - {self.q + other.q}'
+        raise NotImplemented
+
+    def __sub__(self, other):
+        if isinstance(other, Cell):
+            return f'Вычитание клеточной биомассы составило - {Cell(self.q - other.q)}' \
+                if self.q - other.q > 0 \
+                else f"Клеточной биомассы в первой клетке меньше чем во второй, вычитание невозможно!"
+
+    def __mul__(self, other):
+        if isinstance(other, Cell):
+            return f'Процедура переумножения клеток вернуло результат - {Cell(self.q * other.q)}'
+
+    def __floordiv__(self, other):
+        if isinstance(other, Cell):
+            return f'Процедура целочисленного деления клеток вернуло результат - {Cell(self.q // other.q)}'
 
 
-class Position(Worker):
-    #
-    def get_full_name(self):
-        return self.name + ' ' + self.surname
-
-    def get_total_income(self):
-        return self.total_income
-
-
-a = Position()
-
-print(f'Employee is {a.get_full_name()}')
-print(f'Total income of {a.get_full_name()} is ${a.get_total_income()}')
+a = Cell(5)
+b = Cell(7)
+print(a + b)
+print(a - b)
+print(a * b)
+print(a // b)
+print(b.make_order(7))
