@@ -1,40 +1,51 @@
-class Cell:
-    """
-    Супер-пупер метод молекулярной генетики и инженерии
-    """
-    def __init__(self, quantity):
-        self.q = quantity
+"""
+Создайте собственный класс-исключение, который должен проверять содержимое списка на наличие только чисел.
+Проверить работу исключения на реальном примере.
+Запрашивать у пользователя данные и заполнять список необходимо только числами.
+Класс-исключение должен контролировать типы данных элементов списка.
 
-    def make_order(self, rows):
-        return '\n'.join(['@ ' * rows for _ in range(self.q // rows)]) + '\n' + '@ ' * (self.q % rows)
+Примечание: длина списка не фиксирована. Элементы запрашиваются бесконечно, пока пользователь сам
+не остановит работу скрипта, введя, например, команду «exit». При этом скрипт завершается, сформированный список
+с числами выводится на экран.
 
-    def __str__(self):
-        return f"{self.q}"
+Подсказка: для этого задания примем, что пользователь может вводить только числа и строки.
+Во время ввода пользователем очередного элемента необходимо реализовать проверку типа элемента.
+Вносить его в список, только если введено число. Класс-исключение должен не позволить пользователю ввести
+текст (не число) и отобразить соответствующее сообщение. При этом работа скрипта не должна завершаться.
+"""
+# import re
+# import string
 
-    def __add__(self, other):
-        if isinstance(other, Cell):
-            return f'Сумма клеток - {self.q + other.q}'
-        raise NotImplemented
+# gen_abc = string.ascii_letters
+# x = re.findall('[a-zA-Z]', gen_abc)
+import re
 
-    def __sub__(self, other):
-        if isinstance(other, Cell):
-            return f'Вычитание клеточной биомассы составило - {Cell(self.q - other.q)}' \
-                if self.q - other.q > 0 \
-                else f"Клеточной биомассы в первой клетке меньше чем во второй, вычитание невозможно!"
-
-    def __mul__(self, other):
-        if isinstance(other, Cell):
-            return f'Процедура переумножения клеток вернуло результат - {Cell(self.q * other.q)}'
-
-    def __floordiv__(self, other):
-        if isinstance(other, Cell):
-            return f'Процедура целочисленного деления клеток вернуло результат - {Cell(self.q // other.q)}'
+class NonNum(Exception):
+    def __init__(self, txt):
+        self.txt = txt
 
 
-a = Cell(5)
-b = Cell(7)
-print(a + b)
-print(a - b)
-print(a * b)
-print(a // b)
-print(b.make_order(7))
+# def validation(x):
+#     try:
+#         int(x)
+#     except ValueError:
+#         return x == 0
+
+
+user_list = []
+
+while True:
+    user_data = input('Введите данные (для выхода наберите exit): ')
+    user_temp = user_data
+    validation_dot = re.match(r'^\.+', user_data)
+    try:
+        if user_data.lower() == 'exit':
+            print(f'Созданный список - {user_list}')
+            break
+        elif user_data.isalpha() or validation_dot is not None:
+            raise NonNum('Введите, пожалуйста, число')
+    except (ValueError, NonNum) as Error:
+        print(Error)
+    else:
+        user_list.append(user_data)
+        print(user_list)
